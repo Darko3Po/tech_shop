@@ -4,8 +4,8 @@
 
         Tip 2: you can also add an image using data-image tag
     -->
-      <div class="logo"><a href="http://www.creative-tim.com" class="simple-text logo-normal">
-          Creative Tim
+      <div class="logo"><a href="/" class="simple-text logo-normal">
+          Tech Shop
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
@@ -16,9 +16,15 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./user.html">
+            <a class="nav-link" href="{{ url('categories') }}">
               <i class="material-icons">person</i>
-              <p>User Profile</p>
+              <p>Categories</p>
+            </a>
+          </li>
+           <li class="nav-item ">
+            <a class="nav-link" href="{{ url('add-category') }}">
+              <i class="material-icons">person</i>
+              <p>Add Category</p>
             </a>
           </li>
           <li class="nav-item ">
