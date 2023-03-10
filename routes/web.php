@@ -29,6 +29,8 @@ Route::middleware(['auth','isAdmin'])->group(function(){
          Route::get('categories','Admin\CategoryController@index');
          Route::get('add-category','Admin\CategoryController@add');
          Route::post('insert-category','Admin\CategoryController@insert');
+         Route::get('edit-prod/{id}','Admin\CategoryController@edit');
+         Route::put('update-category/{id}','Admin\CategoryController@update');
 
 });
 
