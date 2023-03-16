@@ -7,7 +7,7 @@
 			<h4>Edit/Update Category</h4>
 		</div>
 		<dvi class="card-body">
-			<form action="{{ url('update-category/'.$category->id) }}" method="POST" enctype="multipart/form-data">
+			<form action="{{ url('update-category/'.$category->id)}}" method="POST" enctype="multipart/form-data">
 				@csrf
 				@method('PUT')
 				<div class="row">
@@ -44,7 +44,7 @@
 						<textarea name="meta_keywords"rows="3" class="form-control" >{{ $category->meta_keywords }}</textarea>	
 					</div>
 					@if($category->image)
-						<img src="{{ asset('assets/uploads/category'. $category->image) }}" alt="Category Image">
+						<img src="{{ asset('assets/uploads/category/'.$category->image) }}" alt="Category Image">
 					@endif
 					<div class="col-md-12 mb-3">
 						<input type="file" name="image" class="form-control">
