@@ -21,6 +21,10 @@ use App\Http\Controllers\Frontend\FrontendController;
 // });
 
    Route::get('/',[FrontendController::class,'index']);
+   Route::get('category',[FrontendController::class,'category']);
+
+   //Route::get('single-product/{id}',[FrontendController::class,'open']);
+   
 
 Auth::routes();
 
