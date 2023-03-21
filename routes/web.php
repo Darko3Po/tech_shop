@@ -22,6 +22,10 @@ use App\Http\Controllers\Frontend\FrontendController;
 
    Route::get('/',[FrontendController::class,'index']);
    Route::get('category',[FrontendController::class,'category']);
+   Route::get('category/{slug}',[FrontendController::class,'viewcategory']);
+   Route::get('category/{cate_slug}/{prod_slug}',[FrontendController::class,'productview']);
+
+
 
    //Route::get('single-product/{id}',[FrontendController::class,'open']);
    
