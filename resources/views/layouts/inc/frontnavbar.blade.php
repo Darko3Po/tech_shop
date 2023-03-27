@@ -10,16 +10,33 @@
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ url('category') }}">Category</a>
+          <a class="nav-link" >Category</a>
         </li>
-        
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url('cart') }}">Cart</a>
+        </li>
+{{-- 
+        @guest
+         @if(Route::has('login'))
+              <li class="nav-item">
+                  <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+              </li>
+         @endif
 
-          <li class="nav-item">
-            <a class="nav-link ">Login</a>
+         @if(Route::has('register'))
+            <li class="nav-item">
+                  <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+              </li>
+         @endif
+        @else
+
+ --}}
+        {{--   <li class="nav-item">
+            <a class="nav-link">Login</a>
           </li>
           <li class="nav-item">
             <a class="nav-link ">Register</a>
-          </li>
+          </li> --}}
       </ul>
     </div>
   </div>

@@ -28,6 +28,7 @@ use App\Http\Controllers\Frontend\CartController;
 
 
 
+
    //Route::get('single-product/{id}',[FrontendController::class,'open']);
    
 
@@ -35,9 +36,13 @@ Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
+    Route::post('add-to-cart',[CartController::class,'addProduct']);
+
 Route::middleware(['auth'])->group(function(){
 
-      Route::post('add-to-cart',[CartController::class,'addProduct']);
+   Route::get('cart',[CartController::class,'viewcart']);      
+      
       
 });
 

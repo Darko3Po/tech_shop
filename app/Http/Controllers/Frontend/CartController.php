@@ -44,4 +44,10 @@ class CartController extends Controller
 
 
     }
+
+    public function viewcart()
+    {
+        $cartitems = Cart::where('user_id',Auth::id())->get();
+        return view('frontend.cart', compact('cartitems'));
+    }
 }
