@@ -19,7 +19,7 @@ class CartController extends Controller
         {
             $prod_check = Product::where('id', $product_id)->first();
 
-            if ($prod_check) 
+            if($prod_check) 
             {
                 if (Cart::where('prod_id',$product_id)->where('user_id',Auth::id())->exists()) 
                 {
@@ -50,4 +50,23 @@ class CartController extends Controller
         $cartitems = Cart::where('user_id',Auth::id())->get();
         return view('frontend.cart', compact('cartitems'));
     }
+
+    public function deleteproduct(Request $request)
+    {
+        if(Auth::check())
+        {
+          $prod_id = $request->input('prod_id');  
+          if(Cart::where('prod_id', $prod_id)->where('user_id', Auth::id())->exists())
+          {
+            $cartItem = Cart::where('prod_id', $prod_id)->where('user_id', Auth::id())->first();
+            $cartItem->delete();
+            return response()->json(['status' => "Product Deleted Successfully"]);
+          } 
+        }
+        else
+        {
+            return response()->json(['status' => "Login to Continue"]);
+        }
+    }
+
 }

@@ -29,13 +29,10 @@
               </li>
          @endif
         @else
-
- --}}
-        {{--   <li class="nav-item">
-            <a class="nav-link">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link ">Register</a>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+              {{ Auth::user()->name }}
+            </a>
           </li> --}}
       </ul>
     </div>
