@@ -19,3 +19,14 @@
 	-moz-appearance:none;
 	appearance: none;
 }
+
+.checkout-form label{
+	font-size: 12px;
+	font-weight: 700;
+}
+
+.checkout-form input{
+	font-size: 14px;
+	padding: 15;
+	font-weight: 400;
+}
