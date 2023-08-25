@@ -18,8 +18,9 @@
 
 <div class="container my-5">
 	<div class="card shadow">
+		@if ($cartitems->count() > 0)
 		<div class="card-body">
-			@php $total = 0;@endphp
+			@php $total = 0; @endphp
 			@foreach ($cartitems as $item)
 					<div class="row product_data">
 					<div class="col-md-2 my-auto">
@@ -40,9 +41,11 @@
 							<input type="text" name="quantity" class="form-control qty-input text-center" value="{{ $item->prod_qty }}">
 							<button class="input-group-text changeQuantity increment-btn">+</button>
 						</div>
-						@php $total += $item->products->selling_price*$item->prod_qty; @endphp
+							@php
+								$total += $item->products->selling_price * $item->prod_qty;
+							@endphp
 						@else
-							<h6>Out of stock</h6>
+								<h6>Out of stock</h6>
 						@endif
 					</div>
 					<div class="col-md-2 my-auto">
@@ -55,6 +58,12 @@
 			<h6> Total Price: $ {{ $total }}</h6>
 			<a href="{{ url('checkout') }}" class="btn btn-outline-success  float-end">Procesed to Checkout</a>
 		</div>
+		@else
+			<div class="card-body text-center">
+				<h2>Your  <i class="fa fa-shopping-cart"></i> Cart is empty</h2>
+				<a href="{{ url('category') }}" class="btn btn-outline-primary float-end">Continue Shopping</a>
+			</div>
+		@endif
 	</div>
 </div>
 

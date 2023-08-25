@@ -71,26 +71,31 @@
 					<div class="card-body">
 						<h6>Order Details</h6>
 						<hr>
-						<table class="table table-striped">
-							<thead>
-								<tr>
-									<th>Name</th>
-									<th>Qty</th>
-									<th>Price</th>
-								</tr>
-							</thead>
-							<tbody>
-								@foreach ($cartitems as $item)
-								<tr>
-									<td>{{ $item->products->name }}</td>
-									<td>{{ $item->prod_qty }}</td>
-									<td>{{ $item->products->selling_price }}</td>
-								</tr>
-								@endforeach
-							</tbody>
-						</table>
-						<hr>
-						<button type="submit" class="btn btn-primary w-100">Place Order</button>
+						@if ($cartitems->count() > 0)
+							<table class="table table-striped table-bordered">
+								<thead>
+									<tr>
+										<th>Name</th>
+										<th>Qty</th>
+										<th>Price</th>
+									</tr>
+								</thead>
+								<tbody>
+									@foreach ($cartitems as $item)
+									<tr>
+										<td>{{ $item->products->name }}</td>
+										<td>{{ $item->prod_qty }}</td>
+										<td>{{ $item->products->selling_price }}</td>
+									</tr>
+									@endforeach
+								</tbody>
+							</table>
+							<hr>
+						<button type="submit" class="btn btn-primary w-100 float-end">Place Order</button>
+						 @else
+						 	<h4>Your Checkout page is empty</h4>
+						 @endif
+						
 					</div>
 				</div>
 			</div>

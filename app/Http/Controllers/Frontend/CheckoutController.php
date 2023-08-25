@@ -4,31 +4,33 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Models\Cart;
 use App\Models\Product;
 use App\Models\Order;
 use App\Models\OrderItems;
+use App\Models\OrderItem;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends Controller
 {
     public function index()
     {
         $old_cartitems = Cart::where('user_id', Auth::id())->get();
-        foreach ($old_cartitems as $item) 
+        foreach($old_cartitems as $item)
         {
-            if (Product::where('id', $item->prod_id)->where('qty','>=',$item->prod_qty)->exists()) 
-               {
-                   $removeItem = Cart::where('user_id',Auth::id())->where('prod_id',$item->prod_id)->first();
-                   $removeItem->delete();
-               }   
-        } 
+            if(!Product::where('id', $item->prod_id)->where('qty','>=',$item->prod_qty)->exists()) 
+            {
+                $removeItem = Cart::where('user_id',Auth::id())->where('prod_id',$item->prod_id)->first();
+                $removeItem->delete();
+            }
+        }
+
         $cartitems = Cart::where('user_id', Auth::id())->get();
 
         return view('frontend.checkout', compact('cartitems'));
     }
-
+    //logic for checkout page
     public function placeorder(Request $request)
     {
         $order = new Order();
@@ -43,15 +45,25 @@ class CheckoutController extends Controller
         $order->state= $request->input('state');
         $order->country = $request->input('country');
         $order->pincode = $request->input('pincode');  
+        
+        // To Calculate the total price
+        $total = 0;
+        $cartitems_total = Cart::where('user_id', Auth::id())->get();
+        foreach ($cartitems_total as $item) 
+        {
+            $total += $item->products->selling_price;
+        }
+
+        $order->total_price = $total;
+
         $order->tracking_no = 'Darko'.rand(1111,9999);
         $order->save();
 
-        // $order->id;
- 
+
         $cartitems = Cart::where('user_id',Auth::id())->get();
         foreach($cartitems as $item)
         {
-            OrderItems::create([
+            OrderItem::create([
                 'order_id'=>$order->id,
                 'prod_id'=>$item->prod_id,
                 'qty'=>$item->prod_qty,
