@@ -4,3 +4,20 @@ body{
  a{
  	text-decoration: none !important;
  }
+#paypal-button{
+
+   padding: 10px 0 30px 0;
+   margin: 10px 0 10px 0;
+
+}
+.paypal-button{
+    margin: auto auto auto 15%;
+}
+
+
+    /* Media Query for Mobile Devices */
+        @media (max-width: 480px) {
+        .paypal-button{
+                 margin: auto;
+            }
+        }

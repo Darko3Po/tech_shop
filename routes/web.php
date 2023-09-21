@@ -9,6 +9,7 @@ use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\UserController;
+use App\Http\Controllers\Frontend\WishlistController;
 
 
 /*
@@ -39,12 +40,19 @@ use App\Http\Controllers\Frontend\UserController;
 
 Auth::routes();
 
-   Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('load-cart-data',[CartController::class,'cartcount'] );
+Route::get('load-wishlist-count',[WishlistController::class,'wishlistcount'] );
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 Route::post('add-to-cart',[CartController::class,'addProduct']);
 Route::post('delete-cart-item',[CartController::class,'deleteproduct']);
 Route::post('update-cart',[CartController::class,'updatecart']);
+
+Route::post('add-to-wishlist', [WishlistController::class,'add']);
+Route::post('delete-wislist-item', [WishlistController::class,'deleteitem']);
+
 
 Route::middleware(['auth'])->group(function(){
 
@@ -54,7 +62,9 @@ Route::middleware(['auth'])->group(function(){
    
    Route::get('my-orders',[UserController::class,'index']);
    Route::get('view-order/{id}',[UserController::class,'view']);
-      
+
+   Route::get('wishlist', [WishlistController::class,'index']);
+   Route::post('proceed-to-pay', [CheckoutController::class,'apppay_check']);
 });
 
 
