@@ -24,52 +24,52 @@
 						<div class="row checkout-form">
 							<div class="col-md-6">
 								<label for="firstName">First Name</label>
-								<input type="text" class="form-control firstname" value="{{ Auth::user()->name }}" name="fname" placeholder="Enter First Name">
+								<input type="text" class="form-control firstname" value="{{ Auth::user()->name }}" name="fname" placeholder="Enter First Name" required>
 								<span id="fname_error" class="text-danger"></span>
 							</div>
 							<div class="col-md-6">
 								<label for="lastName">Last Name</label>
-								<input type="text" class="form-control lastname" value="{{ Auth::user()->lname }}" name="lname" placeholder="Enter Last Name">
+								<input type="text" class="form-control lastname" value="{{ Auth::user()->lname }}" name="lname" placeholder="Enter Last Name" required>
 								<span id="lname_error" class="text-danger"></span>
 							</div>
 							<div class="col-md-6 mt-3">
 								<label for="">Email</label>
-								<input type="text" class="form-control email"value="{{ Auth::user()->email }}" name="email" placeholder="Enter Email">
+								<input type="text" class="form-control email"value="{{ Auth::user()->email }}" name="email" placeholder="Enter Email" required>
 								<span id="email_error" class="text-danger"></span>
 							</div>
 							<div class="col-md-6 mt-3">
 								<label for="">Phone Number</label>
-								<input type="text" class="form-control phone" value="{{ Auth::user()->phone }}" name="phone" placeholder="Enter Phone Number">
+								<input type="text" class="form-control phone" value="{{ Auth::user()->phone }}" name="phone" placeholder="Enter Phone Number" required>
 								<span id="phone_error" class="text-danger"></span>
 							</div>
 							<div class="col-md-6 mt-3">
 								<label for="">Address 1</label>
-								<input type="text" class="form-control address1" value="{{ Auth::user()->address1 }}" name="address1" placeholder="Enter First Name">
+								<input type="text" class="form-control address1" value="{{ Auth::user()->address1 }}" name="address1" placeholder="Enter First Name" required>
 								<span id="address1_error" class="text-danger"></span>
 							</div>
 							<div class="col-md-6 mt-3">
 								<label for="">Address 2</label>
-								<input type="text" class="form-control address2" value="{{ Auth::user()->address2 }}" name="address2" placeholder="Enter First Name">
+								<input type="text" class="form-control address2" value="{{ Auth::user()->address2 }}" name="address2" placeholder="Enter First Name" required>
 								<span id="address2_error" class="text-danger"></span>
 							</div>
 							<div class="col-md-6 mt-3">
 								<label for="">City</label>
-								<input type="text" class="form-control city" value="{{ Auth::user()->city }}" name="city" placeholder="Enter First Name">
+								<input type="text" class="form-control city" value="{{ Auth::user()->city }}" name="city" placeholder="Enter First Name" required>
 								<span id="city_error" class="text-danger"></span>
 							</div>
 							<div class="col-md-6 mt-3">
 								<label for="">State</label>
-								<input type="text" class="form-control state" value="{{ Auth::user()->state }}" name="state" placeholder="Enter State">
+								<input type="text" class="form-control state" value="{{ Auth::user()->state }}" name="state" placeholder="Enter State" required>
 								<span id="state_error" class="text-danger"></span>
 							</div>
 							<div class="col-md-6 mt-3">
 								<label for="">Country</label>
-								<input type="text" class="form-control country" value="{{ Auth::user()->country }}" name="country" placeholder="Enter Country">
+								<input type="text" class="form-control country" value="{{ Auth::user()->country }}" name="country" placeholder="Enter Country" required>
 								<span id="country_error" class="text-danger"></span>
 							</div>
 							<div class="col-md-6 mt-3">
 								<label for="">Pin Code</label>
-								<input type="text" class="form-control pincode" value="{{ Auth::user()->pincode }}" name="pincode" placeholder="Enter Pin Code">
+								<input type="text" class="form-control pincode" value="{{ Auth::user()->pincode }}" name="pincode" placeholder="Enter Pin Code" required>
 								<span id="pincode_error" class="text-danger"></span>
 							</div>
 						</div>
