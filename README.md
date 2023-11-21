@@ -1,4 +1,4 @@
-#Tech Shop
+##Tech Shop
 
 This is an e-commerce solution built from scratch.
 
@@ -14,16 +14,16 @@ The project was developed using the following technologies:
 
 ## Project Setup
 
-#Detailed steps to install the project:
+Detailed steps to install the project:
 
-#Clone Project: 
+1.Clone Project: 
 
-git clone https://github.com/your-account/your-project.git
+git clone https://github.com/Darko3Po/tech_shop.git
 
-#Set Up Database:
+2.Set Up Database:
 
 Create a new database for your project. Use a database management tool like phpMyAdmin or the command line to create a new database.
 
-#Server Configuration:
+3.Server Configuration:
 
 If you're using Apache, ensure the project folder is in the server's document root directory or create a virtual host.
