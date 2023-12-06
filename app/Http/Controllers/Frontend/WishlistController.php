@@ -41,7 +41,7 @@ class WishlistController extends Controller
             return response()->json(['status' => "Login to Continue"]); 
         }
     }
-
+    
     public function deleteitem(Request $request)
     {
         if(Auth::check())

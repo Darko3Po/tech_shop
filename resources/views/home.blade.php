@@ -13,8 +13,10 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    {{ __('You are logged in!') }}
+                     <div class="alert alert-success" role="alert">
+                             {{ __('You are logged in!') }}
+                     </div>
+                    <button type="button" class="btn btn-success"><a href="{{ url('/') }}" style="color:white;">Lets Shoping</a></button>
                 </div>
             </div>
         </div>

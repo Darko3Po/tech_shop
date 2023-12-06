@@ -9,6 +9,7 @@ use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\UserController;
+use App\Http\Controllers\Frontend\ReviewController;
 use App\Http\Controllers\Frontend\WishlistController;
 
 
@@ -29,21 +30,25 @@ use App\Http\Controllers\Frontend\WishlistController;
 
    Route::get('/',[FrontendController::class,'index']);
    Route::get('category',[FrontendController::class,'category']);
+   Route::get('info',[FrontendController::class,'infostud']);
    Route::get('category/{slug}',[FrontendController::class,'viewcategory']);
    Route::get('category/{cate_slug}/{prod_slug}',[FrontendController::class,'productview']);
 
+   Route::get('prdouct-list',[FrontendController::class,'productlistAjax']);
+
+   Route::post('searchproduct',[FrontendController::class,'searchProduct']);
 
 
 
    Route::get('single-product/{id}',[FrontendController::class,'open']);
-   
+
 
 Auth::routes();
 
 
 Route::get('load-cart-data',[CartController::class,'cartcount'] );
 Route::get('load-wishlist-count',[WishlistController::class,'wishlistcount'] );
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 Route::post('add-to-cart',[CartController::class,'addProduct']);
@@ -56,12 +61,16 @@ Route::post('delete-wislist-item', [WishlistController::class,'deleteitem']);
 
 Route::middleware(['auth'])->group(function(){
 
-   Route::get('cart',[CartController::class,'viewcart']);      
-   Route::get('checkout',[CheckoutController::class,'index']);      
-   Route::post('place-order',[CheckoutController::class,'placeorder']);      
-   
+   Route::get('cart',[CartController::class,'viewcart']);
+   Route::get('checkout',[CheckoutController::class,'index']);
+   Route::post('place-order',[CheckoutController::class,'placeorder']);
+
    Route::get('my-orders',[UserController::class,'index']);
    Route::get('view-order/{id}',[UserController::class,'view']);
+
+   Route::get('add-review/{product_slug}/userreview',[ReviewController::class,'add']);
+
+
 
    Route::get('wishlist', [WishlistController::class,'index']);
    Route::post('proceed-to-pay', [CheckoutController::class,'apppay_check']);
@@ -89,7 +98,7 @@ Route::middleware(['auth','isAdmin'])->group(function(){
          Route::get('delete-product/{id}',[ProductController::class,'destroy']);
 
 
-       
+
          Route::get('orders', [OrderController::class,'index']);
          Route::get('admin/view-order/{id}', [OrderController::class,'view']);
          Route::put('update-order/{id}', [OrderController::class,'updateorder']);
@@ -98,7 +107,7 @@ Route::middleware(['auth','isAdmin'])->group(function(){
 
          Route::get('users', [DashboardController::class,'users']);
          Route::get('view-users/{id}', [DashboardController::class,'viewusers']);
-      
+
 
 });
 
